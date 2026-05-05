@@ -1,0 +1,6 @@
+[submodule "advice"]
+	path = advice
+	url = https://github.com/andylitvinov-design/brain-advice.git
+[submodule "management"]
+	path = management
+	url = https://github.com/andylitvinov-design/brain-management.git
