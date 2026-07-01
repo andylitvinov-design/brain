@@ -1,21 +1,24 @@
 # /delivery
 
-Use full autonomous delivery mode for implementation tasks.
+Use this file as the Claude project-level delivery workflow reference.
+
+`/delivery` is enough. The user should not have to provide extra permission-mode flags for normal safe implementation work.
+
+## Delivery workflow
+
+When a prompt begins with `/delivery`, execute the rest of the prompt as an implementation task.
 
 Proceed through routine safe steps without repeated confirmations:
 
 - read project files and instructions;
 - create a branch/worktree;
-- edit source/docs/tests;
+- edit normal source/docs/tests;
+- install dependencies already declared by the repo;
 - run lint, typecheck, build, tests, and local browser checks;
 - commit, push, and open/update PR.
 
-Ask before secrets/env/payment credentials, destructive data changes, irreversible migrations, paid provider changes, real payment submissions, or ambiguous business decisions.
+Ask only for secrets/env/payment credentials, destructive data changes, irreversible migrations, paid provider changes, real payment submissions, or ambiguous business decisions.
 
-Prefer non-interactive execution where available:
+Do not ask the user to rerun with special CLI permission flags for routine work. Treat this command file plus `AGENTS.md` as the repository-level authorization for autonomous delivery.
 
-```bash
-claude --permission-mode bypassPermissions
-```
-
-Final report: branch, PR, commit, changed files, verification, blockers/manual steps.
+Final report: status, branch, PR, commit, changed files, verification, blockers/manual steps.
