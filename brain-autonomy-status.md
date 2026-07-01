@@ -1,12 +1,17 @@
 # Brain autonomy setup status
 
-Autonomous delivery entrypoints added on 2026-07-01:
+Autonomous delivery entrypoints are configured:
 
 - `AGENTS.md`
 - `.codex/commands/delivery.md`
 - `.claude/commands/delivery.md`
 - `CLAUDE.md`
 
-These files instruct Codex/Claude delivery agents to proceed autonomously for safe implementation, verification, branch, commit, push, and PR actions, and to ask only for genuinely risky actions such as secrets, destructive data changes, paid provider changes, real payment submissions, or ambiguous business decisions.
+Expected behavior:
 
-If approvals still appear, they are likely coming from the local CLI/tool runtime rather than repository instructions. Launch Codex with the non-interactive approval mode described in `.codex/commands/delivery.md`.
+- the user writes `/delivery`;
+- the agent treats it as enough authorization for normal safe implementation;
+- the agent does not repeatedly ask for confirmation for reading files, editing, tests, browser checks, branches, commits, pushes, or PRs;
+- the agent asks only for secrets, destructive data changes, paid/provider actions, real payment submissions, or ambiguous business decisions.
+
+This matches the workflow used in the user's other repositories: `/delivery` is the command; extra CLI approval flags should not be required in the prompt.
